@@ -10,7 +10,7 @@
     --focus-color: #ffc107;
     --focus-outline: #1a1a1a;
     --base-font-size: 112.5%; 
-    --article-max-width: 900px;
+    --article-max-width: 950px;
 }
 
 body.alto-contraste {
@@ -29,11 +29,6 @@ html {
     scroll-behavior: smooth;
 }
 
-@media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    * { transition: none !important; animation: none !important; }
-}
-
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--bg-color);
@@ -44,7 +39,7 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-h1, h2, h3, h4, .brand, .tech-font {
+h1, h2, h3, h4, .brand {
     font-family: 'JetBrains Mono', monospace;
     font-weight: 700;
     color: var(--primary-color);
@@ -118,7 +113,6 @@ header.site-header {
 }
         
 .site-header .brand .syntax { color: var(--accent-color); }
-body.alto-contraste .site-header .brand { color: var(--bg-color); }
 
 nav.top-nav a {
     color: #ffffff;
@@ -185,8 +179,6 @@ article {
     width: 100%;
 }
 
-article:focus { outline: none; }
-
 .article-header {
     margin-bottom: 30px;
     padding-bottom: 20px;
@@ -208,8 +200,6 @@ article:focus { outline: none; }
     font-family: 'JetBrains Mono', monospace;
     flex-wrap: wrap;
 }
-        
-.article-meta span { display: flex; align-items: center; gap: 5px; }
 
 .pdf-viewer-container {
     width: 100%;
@@ -226,12 +216,6 @@ article:focus { outline: none; }
     width: 100%;
     height: 850px;
     border: none;
-}
-
-.pdf-fallback {
-    padding: 20px;
-    text-align: center;
-    display: none;
 }
 
 .article-footer {
@@ -276,5 +260,3 @@ footer.site-footer {
     font-size: 0.9rem;
     margin-top: 60px;
 }
-        
-body.alto-contraste footer.site-footer { color: var(--bg-color); }

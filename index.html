@@ -1,19 +1,24 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Evolução da Acessibilidade Digital | TechInclusiva</title>
+    <title>Exibição do Artigo em PDF | TechInclusiva</title>
+    
+    <!-- Conectando o arquivo de Estilos CSS -->
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="script.js">
+    
+    <!-- Importando fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <script src="script.js"></script>
-    <a href="#artigo-principal" class="skip-link">Pular direto para a leitura do artigo</a>
 
+    <a href="#artigo-principal" class="skip-link">Pular direto para a visualização do artigo</a>
+
+    <!-- Barra de Ferramentas de Acessibilidade -->
     <div class="a11y-toolbar" role="region" aria-label="Ajustes de Leitura">
         <span id="a11y-desc" class="sr-only" style="position:absolute; left:-10000px; width:1px; height:1px; overflow:hidden;">Controles para melhorar sua experiência de leitura</span>
         
@@ -24,31 +29,38 @@
         <button id="btn-contraste" onclick="alternarAltoContraste()" aria-pressed="false">Modo Alto Contraste</button>
     </div>
 
+    <!-- Cabeçalho Principal -->
     <header class="site-header">
-        <a href="#" class="brand"><span class="syntax">&lt;</span>TechInclusiva<span class="syntax">/&gt;</span></a>
+        <a href="#" class="brand"><span class="syntax">&lt;</span>TechInclusiva<span class="syntax">/&gt;</span> Blog</a>
         <nav class="top-nav" aria-label="Navegação do Blog">
             <a href="#">Início</a>
             <a href="#">Todos os Artigos</a>
-            <a href="#">Sobre o Autor</a>
+            <a href="#">Sobre os Autores</a>
         </nav>
     </header>
 
     <div class="layout-wrapper">
-        <aside class="toc-sidebar" aria-label="Sumário do Artigo">
-            <h3 id="toc-title">Neste Artigo</h3>
-            <ul aria-labelledby="toc-title">
-                <li><a href="#introducao">Introdução</a></li>
-                <li><a href="#o-que-e-semantica">A Importância da Semântica</a></li>
-                <li><a href="#navegacao-teclado">Navegação por Teclado</a></li>
-                <li><a href="#cores-contraste">Cores e Contraste na Interface</a></li>
-                <li><a href="#conclusao">Considerações Finais</a></li>
-            </ul>
+        
+        <!-- Sidebar: Informações sobre o PDF -->
+        <aside class="toc-sidebar" aria-label="Informações do Artigo">
+            <h3>Sobre este Artigo</h3>
+            <p style="font-size: 0.9rem; margin-bottom: 20px;">
+                Este artigo está hospedado diretamente em formato PDF. Você pode visualizá-lo abaixo ou realizar o download para leitura offline.
+            </p>
+            
+            <!-- Botão de Download do PDF -->
+            <a href="artigo.pdf" download class="btn-download">
+                📥 Baixar Artigo em PDF
+            </a>
         </aside>
 
+        <!-- Conteúdo Principal: Visualizador de PDF -->
         <main id="artigo-principal" tabindex="-1">
-            <article>
+            <article class="pdf-container-article">
+                
                 <header class="article-header">
                     <h1>A Evolução da Acessibilidade Digital no Front-End Moderno</h1>
+                    
                     <div class="article-meta">
                         <span>
                             <svg aria-hidden="true" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/></svg>
@@ -56,62 +68,26 @@
                         </span>
                         <span>
                             <svg aria-hidden="true" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/></svg>
-                            Leitura de 5 minutos
+                            Documento PDF Integrado
                         </span>
                     </div>
                 </header>
 
-                <div class="article-content">
-                    <p id="introducao" class="lead-text">
-                        A construção de interfaces na web evoluiu drasticamente. Com novas tecnologias e frameworks surgindo a cada dia, frequentemente esquecemos do princípio mais básico da internet: <strong>ela deve ser acessível a todos</strong>.
-                    </p>
-
-                    <p>
-                        No cenário atual de desenvolvimento, projetar com acessibilidade não é mais um "recurso adicional" a ser feito no final do projeto, mas sim um requisito legal e moral que deve guiar a arquitetura desde a primeira linha de código estrutural.
-                    </p>
-
-                    <h2 id="o-que-e-semantica">A Importância da Semântica HTML</h2>
-                    <p>
-                        O HTML semântico é a fundação de um site acessível. Em vez de usar a tag <code>&lt;div&gt;</code> para construir todo o layout, devemos utilizar elementos que descrevam o seu significado (como <code>&lt;article&gt;</code>, <code>&lt;nav&gt;</code>).
-                    </p>
-
-                    <blockquote>
-                        "O uso correto de tags semânticas cria uma árvore de acessibilidade rica no navegador. É essa árvore que os leitores de tela utilizam para traduzir a interface visual."
-                    </blockquote>
-
-                    <h2 id="navegacao-teclado">A Dinâmica da Navegação por Teclado</h2>
-                    <p>
-                        Muitos usuários que possuem dificuldades motoras não utilizam o mouse. Eles dependem inteiramente do teclado (ou dispositivos assistivos) para navegar.
-                    </p>
+                <!-- Visualizador de PDF Embutido -->
+                <div class="pdf-viewer-wrapper">
+                    <!-- 
+                      ATENÇÃO: Altere o atributo 'src="artigo.pdf"' para o nome exato do arquivo PDF 
+                      que você colocou na mesma pasta do seu projeto no VS Code (ex: 'meu-artigo.pdf').
+                    -->
+                    <embed src="artigo.pdf" type="application/pdf" width="100%" height="800px" />
                     
-                    <ul>
-                        <li><strong>Foco Visível:</strong> Nunca remova o <code>outline</code> padrão sem fornecer uma alternativa visual clara.</li>
-                        <li><strong>Ordem Lógica:</strong> O fluxo de navegação da tecla <code>Tab</code> deve seguir a ordem visual de leitura da página.</li>
-                    </ul>
-
-                    <figure>
-                        <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22300%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20300%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1%20text%20%7B%20fill%3A%230f5132%3Bfont-weight%3Abold%3Bfont-family%3AMonospace%2C%20monospace%3Bfont-size%3A24pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1%22%3E%3Crect%20width%3D%22800%22%20height%3D%22300%22%20fill%3D%22%23d1e7dd%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22300%22%20y%3D%22160%22%3EExemplo%20de%20Interface%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Uma representação esquemática mostrando o fluxo de navegação do teclado.">
-                        <figcaption>Figura 1: Representação do caminho lógico que a tecla Tab deve seguir.</figcaption>
-                    </figure>
-
-                    <h2 id="cores-contraste">Cores e Contraste na Interface</h2>
-                    <p>
-                        A recomendação da WCAG (nível AA) é manter uma relação de contraste de pelo menos <strong>4.5:1</strong> para textos normais e <strong>3.1:1</strong> para textos grandes.
-                    </p>
-
-<pre><code aria-label="Código CSS mostrando variáveis de cores">/* Implementação segura de cores */
-:root {
-  --background: #ffffff;
-  --text-primary: #1a1a1a;
-  --interactive: #0f5132;
-}</code></pre>
-
-                    <h2 id="conclusao">Considerações Finais</h2>
-                    <p>
-                        Escrever código acessível não significa sacrificar o design moderno. Pelo contrário, exige que sejamos melhores engenheiros.
-                    </p>
+                    <!-- Fallback caso o navegador não suporte PDF embutido -->
+                    <noscript>
+                        <p>Seu navegador não suporta visualização de PDF integrada. <a href="artigo.pdf">Clique aqui para baixar o PDF</a>.</p>
+                    </noscript>
                 </div>
                 
+                <!-- Rodapé do Artigo -->
                 <footer class="article-footer">
                     <div class="author-box">
                         <div class="author-avatar" aria-hidden="true">2A</div>
@@ -121,12 +97,19 @@
                         </div>
                     </div>
                 </footer>
+
             </article>
         </main>
+
     </div>
 
+    <!-- Rodapé do Site -->
     <footer class="site-footer">
         <p>&copy; 2026 TechInclusiva. O conteúdo desta página é distribuído sob licença livre.</p>
     </footer>
+
+    <!-- Conectando o arquivo de Script JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
+```

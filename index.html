@@ -4,111 +4,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exibição do Artigo em PDF | TechInclusiva</title>
-    
-    <!-- Conectando o arquivo de Estilos CSS -->
+    <title>Acessibilidade Visual nas Escolas | TechInclusiva</title>
     <link rel="stylesheet" href="style.css">
-    
-    <!-- Importando fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
     <a href="#artigo-principal" class="skip-link">Pular direto para a visualização do artigo</a>
 
-    <!-- Barra de Ferramentas de Acessibilidade -->
     <div class="a11y-toolbar" role="region" aria-label="Ajustes de Leitura">
-        <span id="a11y-desc" class="sr-only" style="position:absolute; left:-10000px; width:1px; height:1px; overflow:hidden;">Controles para melhorar sua experiência de leitura</span>
+        <span id="a11y-desc" class="sr-only" style="position:absolute; left:-10000px; width:1px; height:1px; overflow:hidden;">Controles para melhorar a sua experiência de leitura</span>
         
         <span style="font-size: 0.8rem; color: var(--text-muted); margin-right: 10px; font-weight: bold;">AJUSTES:</span>
-        <button onclick="alterarTamanhoFonte('diminuir')" aria-label="Reduzir tamanho do texto">A-</button>
+        <button onclick="alterarTamanhoFonte('diminuir')" aria-label="Reduzir o tamanho do texto">A-</button>
         <button onclick="alterarTamanhoFonte('normal')" aria-label="Tamanho de texto original">A</button>
-        <button onclick="alterarTamanhoFonte('aumentar')" aria-label="Ampliar tamanho do texto">A+</button>
+        <button onclick="alterarTamanhoFonte('aumentar')" aria-label="Ampliar o tamanho do texto">A+</button>
         <button id="btn-contraste" onclick="alternarAltoContraste()" aria-pressed="false">Modo Alto Contraste</button>
     </div>
 
-    <!-- Cabeçalho Principal -->
     <header class="site-header">
-        <a href="#" class="brand"><span class="syntax">&lt;</span>TechInclusiva<span class="syntax">/&gt;</span> Blog</a>
+        <a href="#" class="brand"><span class="syntax">&lt;</span>TechInclusiva<span class="syntax">/&gt;</span></a>
         <nav class="top-nav" aria-label="Navegação do Blog">
             <a href="#">Início</a>
-            <a href="#">Todos os Artigos</a>
-            <a href="#">Sobre os Autores</a>
+            <a href="#">Sobre o Projeto</a>
+            <a href="Artigo.pdf" download>Baixar PDF</a>
         </nav>
     </header>
 
     <div class="layout-wrapper">
-        
-        <!-- Sidebar: Informações sobre o PDF -->
-        <aside class="toc-sidebar" aria-label="Informações do Artigo">
-            <h3>Sobre este Artigo</h3>
-            <p style="font-size: 0.9rem; margin-bottom: 20px;">
-                Este artigo está hospedado diretamente em formato PDF. Você pode visualizá-lo abaixo ou realizar o download para leitura offline.
+        <aside class="toc-sidebar" aria-label="Informações do Projeto">
+            <h3 id="toc-title">Sobre o Documento</h3>
+            <p style="font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px;">
+                Projeto Final de Física e Tecnociência do 2º Ano do Ensino Médio, orientado pelo Prof. Gusthavo Taborda (São José das Palmeiras, 2026).
             </p>
-            
-            <!-- Botão de Download do PDF -->
-            <a href="artigo.pdf" download class="btn-download">
-                📥 Baixar Artigo em PDF
-            </a>
+            <a href="Artigo.pdf" download class="btn-download-pdf">📥 Descarregar Artigo (PDF)</a>
         </aside>
 
-        <!-- Conteúdo Principal: Visualizador de PDF -->
         <main id="artigo-principal" tabindex="-1">
-            <article class="pdf-container-article">
-                
+            <article>
                 <header class="article-header">
-                    <h1>A Evolução da Acessibilidade Digital no Front-End Moderno</h1>
-                    
+                    <h1>Acessibilidade Visual nas Escolas: A Física e a Tecnociência a Favor do Acesso Universal</h1>
                     <div class="article-meta">
                         <span>
                             <svg aria-hidden="true" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/></svg>
-                            Publicado em: <time datetime="2026-08-05">05 de Agosto de 2026</time>
+                            Publicado em: <time datetime="2026-06-01">2026</time>
                         </span>
                         <span>
                             <svg aria-hidden="true" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/></svg>
-                            Documento PDF Integrado
+                            Visualizador de PDF Integrado
                         </span>
                     </div>
                 </header>
 
-                <!-- Visualizador de PDF Embutido -->
-                <div class="pdf-viewer-wrapper">
-                    <!-- 
-                      ATENÇÃO: Altere o atributo 'src="artigo.pdf"' para o nome exato do arquivo PDF 
-                      que você colocou na mesma pasta do seu projeto no VS Code (ex: 'meu-artigo.pdf').
-                    -->
-                    <embed src="artigo.pdf" type="application/pdf" width="100%" height="800px" />
-                    
-                    <!-- Fallback caso o navegador não suporte PDF embutido -->
-                    <noscript>
-                        <p>Seu navegador não suporta visualização de PDF integrada. <a href="artigo.pdf">Clique aqui para baixar o PDF</a>.</p>
-                    </noscript>
+                <div class="article-content">
+                    <p class="lead-text">
+                        Pode visualizar o documento oficial do artigo integrado diretamente no leitor abaixo ou descarregá-lo para leitura offline através do botão lateral.
+                    </p>
+
+                    <!-- Bloco embutido do PDF real -->
+                    <div class="pdf-viewer-container">
+                        <embed src="Artigo.pdf" type="application/pdf" width="100%" height="800px" />
+                        <div class="pdf-fallback">
+                            <p>O seu navegador não suporta a visualização direta de PDFs. <a href="Artigo.pdf" download>Clique aqui para descarregar o PDF do artigo</a>.</p>
+                        </div>
+                    </div>
                 </div>
                 
-                <!-- Rodapé do Artigo -->
                 <footer class="article-footer">
                     <div class="author-box">
                         <div class="author-avatar" aria-hidden="true">2A</div>
                         <div class="author-info">
-                            <h4>Turma do 2°A</h4>
-                            <p>Alunos do 2° ano do ensino médio do Colégio Estadual São José</p>
+                            <h4>Alunos do 2º Ano do Ensino Médio</h4>
+                            <p>Orientação: Prof. Gusthavo Taborda | São José das Palmeiras, 2026</p>
                         </div>
                     </div>
                 </footer>
-
             </article>
         </main>
-
     </div>
 
-    <!-- Rodapé do Site -->
     <footer class="site-footer">
-        <p>&copy; 2026 TechInclusiva. O conteúdo desta página é distribuído sob licença livre.</p>
+        <p>&copy; 2026 TechInclusiva. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- Conectando o arquivo de Script JavaScript -->
+    <!-- Script posicionado corretamente no final do body -->
     <script src="script.js"></script>
 </body>
 </html>

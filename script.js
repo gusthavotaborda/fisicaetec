@@ -1,12 +1,12 @@
-let tamanhoFonteAtual = 112.5;
+let tamanhoFonteAtual = 100; // Porcentagem base ajustada para mobile-first
 
 function alterarTamanhoFonte(acao) {
     if (acao === 'aumentar' && tamanhoFonteAtual < 150) {
         tamanhoFonteAtual += 10;
-    } else if (acao === 'diminuir' && tamanhoFonteAtual > 90) {
+    } else if (acao === 'diminuir' && tamanhoFonteAtual > 85) {
         tamanhoFonteAtual -= 10;
     } else if (acao === 'normal') {
-        tamanhoFonteAtual = 112.5;
+        tamanhoFonteAtual = 100;
     }
     document.documentElement.style.setProperty('--base-font-size', `${tamanhoFonteAtual}%`);
 }

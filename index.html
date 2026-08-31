@@ -1,11 +1,10 @@
-
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acessibilidade Visual nas Escolas | TechInclusiva</title>
-    <!-- Link correto para o arquivo CSS -->
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,34 +13,37 @@
 <body>
     <a href="#artigo-principal" class="skip-link">Pular direto para a visualização do artigo</a>
 
+    <!-- Barra de Ferramentas de Acessibilidade Adaptável -->
     <div class="a11y-toolbar" role="region" aria-label="Ajustes de Leitura">
-        <span id="a11y-desc" class="sr-only" style="position:absolute; left:-10000px; width:1px; height:1px; overflow:hidden;">Controles para melhorar a sua experiência de leitura</span>
-        
-        <span style="font-size: 0.8rem; color: var(--text-muted); margin-right: 10px; font-weight: bold;">AJUSTES:</span>
-        <button onclick="alterarTamanhoFonte('diminuir')" aria-label="Reduzir o tamanho do texto">A-</button>
-        <button onclick="alterarTamanhoFonte('normal')" aria-label="Tamanho de texto original">A</button>
-        <button onclick="alterarTamanhoFonte('aumentar')" aria-label="Ampliar o tamanho do texto">A+</button>
-        <button id="btn-contraste" onclick="alternarAltoContraste()" aria-pressed="false">Modo Alto Contraste</button>
+        <span class="toolbar-label">AJUSTES:</span>
+        <div class="toolbar-buttons">
+            <button onclick="alterarTamanhoFonte('diminuir')" aria-label="Reduzir o tamanho do texto">A-</button>
+            <button onclick="alterarTamanhoFonte('normal')" aria-label="Tamanho de texto original">A</button>
+            <button onclick="alterarTamanhoFonte('aumentar')" aria-label="Ampliar o tamanho do texto">A+</button>
+            <button id="btn-contraste" onclick="alternarAltoContraste()" aria-pressed="false">Alto Contraste</button>
+        </div>
     </div>
 
+    <!-- Cabeçalho Responsivo -->
     <header class="site-header">
         <a href="#" class="brand"><span class="syntax">&lt;</span>TechInclusiva<span class="syntax">/&gt;</span></a>
         <nav class="top-nav" aria-label="Navegação do Blog">
             <a href="#">Início</a>
-            <a href="#">Sobre o Projeto</a>
             <a href="Artigo.pdf" download>Baixar PDF</a>
         </nav>
     </header>
 
     <div class="layout-wrapper">
+        <!-- Sidebar adaptada para celular (fica acima ou abaixo de forma fluida) -->
         <aside class="toc-sidebar" aria-label="Informações do Projeto">
-            <h3 id="toc-title">Sobre o Documento</h3>
+            <h3>Sobre o Documento</h3>
             <p style="font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px;">
                 Projeto Final de Física e Tecnociência do 2º Ano do Ensino Médio, orientado pelo Prof. Gusthavo Taborda (São José das Palmeiras, 2026).
             </p>
             <a href="Artigo.pdf" download class="btn-download-pdf">📥 Descarregar Artigo (PDF)</a>
         </aside>
 
+        <!-- Visualizador de PDF com redimensionamento mobile -->
         <main id="artigo-principal" tabindex="-1">
             <article>
                 <header class="article-header">
@@ -51,21 +53,19 @@
                             <svg aria-hidden="true" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/></svg>
                             Publicado em: <time datetime="2026">2026</time>
                         </span>
-                        <span>
-                            <svg aria-hidden="true" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/></svg>
-                            Visualizador de PDF Integrado
-                        </span>
                     </div>
                 </header>
 
                 <div class="article-content">
                     <p class="lead-text">
-                        Pode visualizar o documento oficial do artigo integrado diretamente no leitor abaixo ou descarregá-lo para leitura offline.
+                        Visualize o documento oficial do artigo integrado diretamente no leitor abaixo ou descarregue-o para leitura offline.
                     </p>
 
-                    <!-- Exibidor embutido do PDF real -->
                     <div class="pdf-viewer-container">
-                        <embed src="Artigo.PDF" type="application/pdf" width="100%" height="850px" />
+                        <embed src="Artigo.pdf" type="application/pdf" />
+                        <div class="pdf-fallback">
+                            <p>O seu navegador não suporta a visualização direta de PDFs. <a href="Artigo.pdf" download>Clique aqui para descarregar o PDF</a>.</p>
+                        </div>
                     </div>
                 </div>
                 
@@ -86,7 +86,7 @@
         <p>&copy; 2026 TechInclusiva. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- Script carregado corretamente no final do documento -->
     <script src="script.js"></script>
 </body>
 </html>
+```

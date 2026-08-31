@@ -9,8 +9,7 @@
     --border-color: #e9ecef;
     --focus-color: #ffc107;
     --focus-outline: #1a1a1a;
-    --base-font-size: 112.5%; 
-    --article-max-width: 950px;
+    --base-font-size: 100%; 
 }
 
 body.alto-contraste {
@@ -27,15 +26,21 @@ body.alto-contraste {
 html {
     font-size: var(--base-font-size);
     scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
 }
 
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
-    line-height: 1.7;
+    line-height: 1.6;
     margin: 0;
     padding: 0;
+    overflow-x: hidden; /* Evita scroll horizontal indesejado */
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -61,32 +66,46 @@ h1, h2, h3, h4, .brand {
     z-index: 1000;
     text-decoration: none;
     font-weight: bold;
-    transition: top 0.2s;
     border-bottom-right-radius: 8px;
 }
 
 .skip-link:focus { top: 0; }
 
+/* Barra de acessibilidade responsiva (quebra linha em telas pequenas) */
 .a11y-toolbar {
     background-color: var(--secondary-bg);
     border-bottom: 1px solid var(--border-color);
-    padding: 10px 20px;
+    padding: 10px 15px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
+}
+
+.toolbar-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: bold;
+}
+
+.toolbar-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
 .a11y-toolbar button {
     background-color: var(--bg-color);
     border: 2px solid var(--primary-color);
     color: var(--primary-color);
-    padding: 6px 12px;
+    padding: 8px 12px; /* Área de toque ampliada para mobile */
     border-radius: 6px;
     cursor: pointer;
     font-family: 'JetBrains Mono', monospace;
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    min-height: 40px; /* Padrão recomendado para touch */
     transition: all 0.2s;
 }
 
@@ -98,15 +117,17 @@ h1, h2, h3, h4, .brand {
 header.site-header {
     background-color: var(--primary-color);
     color: #ffffff;
-    padding: 20px;
+    padding: 15px 20px;
     border-bottom: 4px solid var(--accent-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .site-header .brand {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     margin: 0;
     color: #ffffff;
     text-decoration: none;
@@ -114,12 +135,18 @@ header.site-header {
         
 .site-header .brand .syntax { color: var(--accent-color); }
 
+nav.top-nav {
+    display: flex;
+    gap: 10px;
+}
+
 nav.top-nav a {
     color: #ffffff;
     text-decoration: none;
     font-weight: 600;
-    padding: 8px 15px;
+    padding: 8px 12px;
     border-radius: 4px;
+    font-size: 0.9rem;
 }
         
 nav.top-nav a:hover, nav.top-nav a:focus {
@@ -127,44 +154,50 @@ nav.top-nav a:hover, nav.top-nav a:focus {
     color: #000;
 }
 
+/* Layout fluido e responsivo */
 .layout-wrapper {
-    max-width: 1300px;
-    margin: 40px auto;
-    padding: 0 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px;
     display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 40px;
-    align-items: start;
+    grid-template-columns: 1fr; /* Mobile-first: 1 coluna por padrão */
+    gap: 25px;
 }
 
-@media (max-width: 900px) {
-    .layout-wrapper { grid-template-columns: 1fr; }
+/* Em telas maiores (tablets/desktops), divide em duas colunas */
+@media (min-width: 850px) {
+    .layout-wrapper {
+        grid-template-columns: 260px 1fr;
+        padding: 0 20px;
+        margin: 40px auto;
+        gap: 35px;
+    }
 }
 
 aside.toc-sidebar {
-    position: sticky;
-    top: 20px;
     background-color: var(--secondary-bg);
     padding: 20px;
     border-radius: 8px;
     border: 1px solid var(--border-color);
     border-left: 4px solid var(--primary-color);
+    height: fit-content;
 }
 
-aside.toc-sidebar h3 { margin-top: 0; font-size: 1.1rem; margin-bottom: 15px; }
+aside.toc-sidebar h3 { margin-top: 0; font-size: 1.1rem; margin-bottom: 12px; }
 
 .btn-download-pdf {
     display: block;
     width: 100%;
-    box-sizing: border-box;
     text-align: center;
     background-color: var(--primary-color);
     color: #ffffff;
-    padding: 12px;
+    padding: 14px;
     border-radius: 6px;
     text-decoration: none;
     font-weight: 600;
     font-family: 'JetBrains Mono', monospace;
+    min-height: 48px;
     transition: background 0.2s;
 }
 
@@ -174,33 +207,36 @@ aside.toc-sidebar h3 { margin-top: 0; font-size: 1.1rem; margin-bottom: 15px; }
 }
 
 article {
-    max-width: var(--article-max-width);
-    margin: 0 auto;
     width: 100%;
 }
 
 .article-header {
-    margin-bottom: 30px;
-    padding-bottom: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
     border-bottom: 2px solid var(--border-color);
 }
 
 .article-header h1 {
-    font-size: 2rem;
-    line-height: 1.2;
-    margin-bottom: 15px;
+    font-size: 1.5rem;
+    line-height: 1.3;
+    margin-bottom: 10px;
     color: var(--text-color);
+}
+
+@media (min-width: 768px) {
+    .article-header h1 { font-size: 2rem; }
 }
 
 .article-meta {
     display: flex;
-    gap: 20px;
-    font-size: 0.9rem;
+    gap: 15px;
+    font-size: 0.85rem;
     color: var(--text-muted);
     font-family: 'JetBrains Mono', monospace;
     flex-wrap: wrap;
 }
 
+/* Visualizador de PDF responsivo para celulares e desktops */
 .pdf-viewer-container {
     width: 100%;
     margin-top: 20px;
@@ -214,28 +250,43 @@ article {
 .pdf-viewer-container embed {
     display: block;
     width: 100%;
-    height: 850px;
+    height: 60vh; /* Altura proporcional adaptada para telas menores */
+    min-height: 500px;
     border: none;
 }
 
+@media (min-width: 768px) {
+    .pdf-viewer-container embed {
+        height: 800px; /* Altura maior em computadores */
+    }
+}
+
 .article-footer {
-    margin-top: 40px;
-    padding-top: 30px;
+    margin-top: 30px;
+    padding-top: 20px;
     border-top: 2px dashed var(--border-color);
 }
 
 .author-box {
     display: flex;
-    align-items: center;
-    gap: 20px;
+    flex-direction: column;
+    gap: 15px;
     background-color: var(--secondary-bg);
     padding: 20px;
     border-radius: 8px;
+    text-align: center;
+}
+
+@media (min-width: 500px) {
+    .author-box {
+        flex-direction: row;
+        text-align: left;
+    }
 }
 
 .author-avatar {
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
     background-color: var(--primary-color);
     color: #fff;
     border-radius: 50%;
@@ -243,20 +294,25 @@ article {
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-family: 'JetBrains Mono', monospace;
+    margin: 0 auto;
+}
+
+@media (min-width: 500px) {
+    .author-avatar { margin: 0; }
 }
 
 .author-info h4 { margin: 0 0 5px 0; color: var(--text-color); }
-.author-info p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
+.author-info p { margin: 0; font-size: 0.85rem; color: var(--text-muted); }
 
 footer.site-footer {
     text-align: center;
-    padding: 30px;
+    padding: 25px 15px;
     background-color: var(--primary-color);
     color: #ffffff;
     border-top: 5px solid var(--accent-color);
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.9rem;
-    margin-top: 60px;
+    font-size: 0.85rem;
+    margin-top: 40px;
 }
